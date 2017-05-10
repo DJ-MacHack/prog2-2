@@ -7,7 +7,7 @@
 
 #include <fstream>
 #include<iostream>
-#include <windows.h>
+//#include <windows.h>
 #include "Artikeldialog.h"
 
 void Artikeldialog::artikelDatenAnzeigen(const Artikel &artikel) {
@@ -50,22 +50,22 @@ void Artikeldialog::credits() {
                 int teile = split(input, vector, 'Q');
                 for(int i = 0; i < teile; i++){
                     if(vector.at(i)=="Q") {
-                        HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
-                        SetConsoleTextAttribute(handle, FOREGROUND_RED);
-                        cout << vector.at(i);
+//                        HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+//                        SetConsoleTextAttribute(handle, FOREGROUND_RED);
+                        cout << "\x1B[31m"+vector.at(i);
                     } else {
-                        HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
-                        SetConsoleTextAttribute(handle, FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN |
-                                                        FOREGROUND_BLUE);
-                        cout << vector.at(i);
+//                        HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+//                        SetConsoleTextAttribute(handle, FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN |
+//                                                        FOREGROUND_BLUE);
+                        cout << "\x1B[37m"+vector.at(i);
                     }
                 }
                 cout << endl;
             } else {
-                HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
-                SetConsoleTextAttribute(handle, FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN |
-                                                FOREGROUND_BLUE);
-                std::cout << input << std::endl;
+//                HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+//                SetConsoleTextAttribute(handle, FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN |
+//                                                FOREGROUND_BLUE);
+                std::cout << "\x1B[37m"+input << std::endl;
             }
         }
         inFile.close();
