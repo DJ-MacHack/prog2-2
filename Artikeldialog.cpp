@@ -76,22 +76,6 @@ void Artikeldialog::credits() {
 
 }
 
-int Artikeldialog::split(const std::string &txt, std::vector<std::string> &strs, char ch)
-{
-    unsigned int pos = txt.find( ch );
-    unsigned int initialPos = 0;
-    strs.clear();
-    while( pos != std::string::npos ) {
-        strs.push_back( txt.substr( initialPos, pos - initialPos ) );
-        initialPos = pos + 1;
-        strs.push_back( txt.substr( pos, 1) );
-
-        pos = txt.find( ch, initialPos );
-    }
-    strs.push_back( txt.substr( initialPos, (std::min((pos), txt.length())) - initialPos + 1 ) );
-
-    return strs.size();
-}
 vector<string> Artikeldialog::split(string str, char delimiter) {
     vector<string> internal;
     stringstream ss(str); // Turn the string into a stream.
