@@ -21,6 +21,7 @@ public:
 
 private:
     int split(const string &txt, std::vector<std::string> &strs, char ch);
+    vector<string>split(string str, char delimiter);
 };
 
 

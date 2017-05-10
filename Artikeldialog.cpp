@@ -7,6 +7,7 @@
 
 #include <fstream>
 #include<iostream>
+#include <sstream>
 //#include <windows.h>
 #include "Artikeldialog.h"
 
@@ -46,8 +47,8 @@ void Artikeldialog::credits() {
     if (inFile.is_open()) {
         while (getline (inFile,input)) {
             if(input.find("Q") != std::string::npos){
-                std::vector<std::string> vector;
-                int teile = split(input, vector, 'Q');
+                std::vector<std::string> vector = split(input, 'Q');
+                int teile = vector.size();
                 for(int i = 0; i < teile; i++){
                     if(vector.at(i)=="Q") {
 //                        HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -87,7 +88,21 @@ int Artikeldialog::split(const std::string &txt, std::vector<std::string> &strs,
 
         pos = txt.find( ch, initialPos );
     }
-    strs.push_back( txt.substr( initialPos, std::min( pos, txt.size() ) - initialPos + 1 ) );
+    strs.push_back( txt.substr( initialPos, (std::min((pos), txt.length())) - initialPos + 1 ) );
 
     return strs.size();
+}
+vector<string> Artikeldialog::split(string str, char delimiter) {
+    vector<string> internal;
+    stringstream ss(str); // Turn the string into a stream.
+    string tok;
+    string s(1, delimiter);
+
+    while(getline(ss, tok, delimiter)) {
+        internal.push_back(tok);
+        internal.push_back(s);
+    }
+    internal.pop_back();
+
+    return internal;
 }
