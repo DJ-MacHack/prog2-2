@@ -9,6 +9,8 @@
 #define INC_2_ARTIKELDIALOG_H
 
 #include "Artikel.h"
+#include <vector>
+#include <iostream>
 
 class Artikeldialog {
 public:
@@ -16,6 +18,9 @@ public:
     int auswahl();
     Artikel artikelErstellen();
     void credits();
+
+private:
+    int split(const string &txt, std::vector<std::string> &strs, char ch);
 };
 
 

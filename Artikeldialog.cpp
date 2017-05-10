@@ -7,6 +7,7 @@
 
 #include <fstream>
 #include<iostream>
+#include <windows.h>
 #include "Artikeldialog.h"
 
 void Artikeldialog::artikelDatenAnzeigen(const Artikel &artikel) {
@@ -44,10 +45,49 @@ void Artikeldialog::credits() {
     //inFile.open("credits.txt");
     if (inFile.is_open()) {
         while (getline (inFile,input)) {
-            std::cout << input << std::endl;
+            if(input.find("Q") != std::string::npos){
+                std::vector<std::string> vector;
+                int teile = split(input, vector, 'Q');
+                for(int i = 0; i < teile; i++){
+                    if(vector.at(i)=="Q") {
+                        HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+                        SetConsoleTextAttribute(handle, FOREGROUND_RED);
+                        cout << vector.at(i);
+                    } else {
+                        HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+                        SetConsoleTextAttribute(handle, FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN |
+                                                        FOREGROUND_BLUE);
+                        cout << vector.at(i);
+                    }
+                }
+                cout << endl;
+            } else {
+                HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+                SetConsoleTextAttribute(handle, FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN |
+                                                FOREGROUND_BLUE);
+                std::cout << input << std::endl;
+            }
         }
         inFile.close();
     } else {
         cout << "Datei kann nicht geoeffnet werden!";
     }
+
+}
+
+int Artikeldialog::split(const std::string &txt, std::vector<std::string> &strs, char ch)
+{
+    unsigned int pos = txt.find( ch );
+    unsigned int initialPos = 0;
+    strs.clear();
+    while( pos != std::string::npos ) {
+        strs.push_back( txt.substr( initialPos, pos - initialPos ) );
+        initialPos = pos + 1;
+        strs.push_back( txt.substr( pos, 1) );
+
+        pos = txt.find( ch, initialPos );
+    }
+    strs.push_back( txt.substr( initialPos, std::min( pos, txt.size() ) - initialPos + 1 ) );
+
+    return strs.size();
 }
