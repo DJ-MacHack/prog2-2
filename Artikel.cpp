@@ -47,8 +47,8 @@ Artikel::Artikel(int artikelnummer, string bezeichnung, int bestand){
 }
 
 //Nebenkonstruktoren, die den Hauptkonstruktor aufrufen
-Artikel::Artikel(int artikelnummer, string bezeichnung):Artikel(artikelnummer, bezeichnung,0) {};
-Artikel::Artikel(int artikelnummer):Artikel(artikelnummer, "Testbezeichnung",0) {}; //Für Artikel, deren Name noch nicht bekannt ist/nicht feststeht
+Artikel::Artikel(int artikelnummer, string bezeichnung):Artikel(artikelnummer, bezeichnung,0) {}
+Artikel::Artikel(int artikelnummer):Artikel(artikelnummer, "Testbezeichnung",0) {} //Für Artikel, deren Name noch nicht bekannt ist/nicht feststeht
 
 int Artikel::getBestand() const {
     return this->bestand;
