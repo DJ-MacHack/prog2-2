@@ -10,7 +10,6 @@
 
 
 #include "Artikel.h"
-#include "Artikeldialog.h"
 
 class ArtikelTest {
 public:
@@ -33,7 +32,6 @@ public:
         int getErgebnis();
 private:
         Artikel* artikel;
-        Artikeldialog dialog;
         int ergebnis = 0;
 };
 

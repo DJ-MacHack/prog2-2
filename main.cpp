@@ -6,6 +6,7 @@
 //
 #include <iostream>
 #include "ArtikelTest.h"
+#include "Artikeldialog.h"
 
 using namespace std;
 
