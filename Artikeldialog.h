@@ -8,7 +8,7 @@
 #ifndef INC_2_ARTIKELDIALOG_H
 #define INC_2_ARTIKELDIALOG_H
 
-#include "artikel.h"
+#include "Artikel.h"
 
 class Artikeldialog {
 public:
