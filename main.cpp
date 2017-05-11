@@ -17,9 +17,10 @@ using namespace std;
 int main() {
     Artikeldialog dialog = Artikeldialog();
     string auswahl = "0";
-    auswahl = dialog.auswahl();
+
 
     do {
+        auswahl = dialog.auswahl();
         if (auswahl == "1") {
             Artikel artikelneu = dialog.artikelErstellen();
             cout << "Ihr Artikel:" << endl;
@@ -42,9 +43,7 @@ int main() {
             }
         } else {
             cout << "Fehlerhafte Eingabe!" << endl;
-            auswahl = dialog.auswahl();
         }
-        auswahl = dialog.auswahl(); //neues Dialogfenster
     } while (auswahl != "3");
     dialog.credits();       //fancy credits
     return 0;
