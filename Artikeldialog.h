@@ -15,7 +15,7 @@
 class Artikeldialog {
 public:
     void artikelDatenAnzeigen(const Artikel& artikel);
-    int auswahl();
+    string auswahl();
     Artikel artikelErstellen();
     void credits();
 

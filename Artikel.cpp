@@ -39,7 +39,13 @@ class niedrigException: public exception {
 } niedrigexp;
 
 
-//Hauptkonstruktor, der (private) Methoden, die auch ueberpruefen, aufruft
+/**
+ * Hauptkonstruktor, der (private) Methoden, die auch ueberpruefen, aufruft
+ * @param artikelnummer
+ * @param bezeichnung
+ * @param bestand
+ */
+
 Artikel::Artikel(int artikelnummer, string bezeichnung, int bestand){
     setArtikelnummer(artikelnummer);
     setBezeichnung(bezeichnung);
@@ -49,19 +55,34 @@ Artikel::Artikel(int artikelnummer, string bezeichnung, int bestand){
 //Nebenkonstruktoren, die den Hauptkonstruktor aufrufen
 Artikel::Artikel(int artikelnummer, string bezeichnung):Artikel(artikelnummer, bezeichnung,0) {}
 Artikel::Artikel(int artikelnummer):Artikel(artikelnummer, "Testbezeichnung",0) {} //Für Artikel, deren Name noch nicht bekannt ist/nicht feststeht
-
+/**
+ * Gibt den aktuellen Bestand aus
+ *@return bestand
+ */
 int Artikel::getBestand() const {
     return this->bestand;
 }
 
+/**
+ * Gibt die Artikelnummer aus
+ *@return artikelnummer
+ */
 int Artikel::getArtikelnummer() const {
     return this->artikelnummer;
 }
 
+/**
+ * Gibt die aktuelle Bezeichnung aus
+ *@return bezeichnung
+ */
 string Artikel::getBezeichnung() const {
     return this->bezeichnung;
 }
 
+/**
+ * Setzt die aktuelle Bezeichnung
+ * @param name
+ */
 void Artikel::setBezeichnung(string name) {
     if(name==""){
         throw leereexp;
@@ -69,6 +90,10 @@ void Artikel::setBezeichnung(string name) {
     this->bezeichnung=name;
 }
 
+/**
+ * Bucht einen Zugang der Menge ab und überprüft ob menge korrekt ist
+ * @param menge
+ */
 void Artikel::bucheZugang(int menge) {
     if(menge < 0){
         throw negativeexp;
@@ -79,6 +104,10 @@ void Artikel::bucheZugang(int menge) {
     this->bestand += menge;
 }
 
+/**
+ * Bucht einen Abgang der Menge ab und überprüft ob menge korrekt ist
+ * @param menge
+ */
 void Artikel::bucheAbgang(int menge) {
     if(this->bestand < menge){
         throw niedrigexp;
@@ -92,6 +121,10 @@ void Artikel::bucheAbgang(int menge) {
     this->bestand -= menge;
 }
 
+/**
+ * Setzt und überprüft, ist private, nur für Konstruktor
+ * @param artikelnummer
+ */
 void Artikel::setArtikelnummer(int artikelnummer){
     if(artikelnummer > 9999 || artikelnummer < 1000){
         throw stellenexp;
@@ -99,6 +132,10 @@ void Artikel::setArtikelnummer(int artikelnummer){
     this->artikelnummer=artikelnummer;
 }
 
+/**
+ * Setzt und überprüft Bestand, ist private, nur für Konstruktor
+ * @param menge
+ */
 void Artikel::setBestand(int menge) {
     if(menge < 0){
         throw niedrigexp;

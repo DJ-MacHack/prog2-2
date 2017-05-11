@@ -10,38 +10,42 @@
 
 using namespace std;
 
+/**
+ * Mainfunktion
+ * @return
+ */
 int main() {
     Artikeldialog dialog = Artikeldialog();
-    int auswahl = 0;
+    string auswahl = "0";
     auswahl = dialog.auswahl();
 
-    while(auswahl < 1 || auswahl > 3){
-        cout << "Fehlerhafte Eingabe!" << endl;
-        auswahl = dialog.auswahl();
-    }
-
-    if(auswahl == 1){
-        Artikel artikelneu = dialog.artikelErstellen();
-        cout << "Ihr Artikel:" << endl;
-        dialog.artikelDatenAnzeigen(artikelneu);
-    }
-
-    if (auswahl == 2) {
-        Artikel artikel = Artikel(1234, "TestinMain", 1);
-        ArtikelTest testobjekt(&artikel);
-
-        try {
-            testobjekt.testAll();
-        } catch (...) {
-            cout << "Unbekannter Fehler!" << endl;
+    do {
+        if (auswahl == "1") {
+            Artikel artikelneu = dialog.artikelErstellen();
+            cout << "Ihr Artikel:" << endl;
+            dialog.artikelDatenAnzeigen(artikelneu);
         }
-        if (testobjekt.getErgebnis() == 6) {
-            cout << "Alle Tests bestanden!" << endl;
+
+        if (auswahl == "2") {
+            Artikel artikel = Artikel(1234, "TestinMain", 1);
+            ArtikelTest testobjekt(&artikel);
+
+            try {
+                testobjekt.testAll();
+            } catch (...) {
+                cout << "Unbekannter Fehler!" << endl;
+            }
+            if (testobjekt.getErgebnis() == 6) {
+                cout << "Alle Tests bestanden!" << endl;
+            } else {
+                cout << "Es wurden Fehler festgestellt!" << endl;
+            }
         } else {
-            cout << "Es wurden Fehler festgestellt!" << endl;
+            cout << "Fehlerhafte Eingabe!" << endl;
+            auswahl = dialog.auswahl();
         }
-    }
-
-    dialog.credits();
+        auswahl = dialog.auswahl(); //neues Dialogfenster
+    } while (auswahl != "3");
+    dialog.credits();       //fancy credits
     return 0;
 }
