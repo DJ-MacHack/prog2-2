@@ -88,6 +88,7 @@ void Artikeldialog::credits() {
                 std::cout << "\x1B[40m\x1B[37m"+input << std::endl;
             }
         }       //Datei schließen
+		cout << "\x1B[0m" <<endl;
         inFile.close();
     } else {
         cout << "Datei kann nicht geoeffnet werden!";
