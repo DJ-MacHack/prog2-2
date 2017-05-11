@@ -53,7 +53,7 @@ void Artikeldialog::credits() {
                     if(vector.at(i)=="Q") {
 //                        HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
 //                        SetConsoleTextAttribute(handle, FOREGROUND_RED);
-                        cout << "\x1B[31m"+vector.at(i);
+                        cout << "\x1B[5m" << "\x1B[31m" << vector.at(i);
                     } else {
 //                        HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
 //                        SetConsoleTextAttribute(handle, FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN |
