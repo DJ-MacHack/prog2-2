@@ -42,7 +42,9 @@ int main() {
                 cout << "Es wurden Fehler festgestellt!" << endl;
             }
         } else {
-            cout << "Fehlerhafte Eingabe!" << endl;
+            if (auswahl != "3") {
+                cout << "Fehlerhafte Eingabe!" << endl;
+            }
         }
     } while (auswahl != "3");
     dialog.credits();       //fancy credits
