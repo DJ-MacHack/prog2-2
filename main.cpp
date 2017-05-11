@@ -31,25 +31,25 @@ int main() {
             catch (...){
                 cout << "Unbekannter Fehler!" << endl;
             }
-        }
-
-        if (auswahl == "2") {
-            Artikel artikel = Artikel(1234, "TestinMain", 1);
-            ArtikelTest testobjekt(&artikel);
-
-            try {
-                testobjekt.testAll();
-            } catch (...) {
-                cout << "Unbekannter Fehler!" << endl;
-            }
-            if (testobjekt.getErgebnis() == 6) {
-                cout << "Alle Tests bestanden!" << endl;
-            } else {
-                cout << "Es wurden Fehler festgestellt!" << endl;
-            }
         } else {
-            if (auswahl != "3") {
-                cout << "Fehlerhafte Eingabe!" << endl;
+            if (auswahl == "2") {
+                Artikel artikel = Artikel(1234, "TestinMain", 1);
+                ArtikelTest testobjekt(&artikel);
+
+                try {
+                    testobjekt.testAll();
+                } catch (...) {
+                    cout << "Unbekannter Fehler!" << endl;
+                }
+                if (testobjekt.getErgebnis() == 6) {
+                    cout << "Alle Tests bestanden!" << endl;
+                } else {
+                    cout << "Es wurden Fehler festgestellt!" << endl;
+                }
+            } else {
+                if (auswahl != "3") {
+                    cout << "Fehlerhafte Eingabe!" << endl;
+                }
             }
         }
     } while (auswahl != "3");
