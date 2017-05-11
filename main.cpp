@@ -24,7 +24,13 @@ int main() {
         if (auswahl == "1") {
             Artikel artikelneu = dialog.artikelErstellen();
             cout << "Ihr Artikel:" << endl;
-            dialog.artikelDatenAnzeigen(artikelneu);
+            try{dialog.artikelDatenAnzeigen(artikelneu);}
+            catch(exception e) {
+                e.what();
+            }
+            catch (...){
+                cout << "Unbekannter Fehler!" << endl;
+            }
         }
 
         if (auswahl == "2") {

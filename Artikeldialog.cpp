@@ -42,14 +42,23 @@ string Artikeldialog::auswahl() {
 Artikel Artikeldialog::artikelErstellen() {
     int nummer, menge;
     string name;
-    cout << "Ihre vierstellige Artikelnummer:" << endl;
-    cin >> nummer;
-    cout << "Ihr Artikelname:" << endl;
-    cin >> name;
-    cout << "Ihr Artikelbestand:" << endl;
-    cin >> menge;
-    Artikel neu = Artikel(nummer, name, menge);
-    return neu;
+    do {
+        cout << "Ihre vierstellige Artikelnummer:" << endl;
+        cin >> nummer;
+        cout << "Ihr Artikelname:" << endl;
+        cin >> name;
+        cout << "Ihr Artikelbestand:" << endl;
+        cin >> menge;
+        try {
+            Artikel neu = Artikel(nummer, name, menge);
+            return neu;
+        } catch (exception e) {
+            e.what();
+            if (cin) { cout << "Fehler, bitte neu Eingeben!" << endl; }
+            else { cout << "Fehler bei der Eingabe!" << endl; }
+        }
+    } while (cin);
+
 }
 
 /**
