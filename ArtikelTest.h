@@ -21,6 +21,7 @@ public:
         int testKonstruktorFalsch1();
         int testKonstruktorFalsch2();
         int testKonstruktorFalsch3();
+        int testKonstruktorFalsch4();
         int testSetNameRichtig1();
         int testSetNameFalsch1();
         int testBucheZugangFalsch1();

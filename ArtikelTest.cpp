@@ -51,6 +51,14 @@ void ArtikelTest::testAll() {
         cout << "Bestanden!" << endl;
     }
 
+    try {
+        cout << "Test Konstruktor falsch 4:" << endl;
+        this->ergebnis += testKonstruktorFalsch4();
+        cout << "Nicht bestanden!" << endl;
+    } catch (exception& a) {
+        cout << a.what() << endl;
+        cout << "Bestanden!" << endl;
+    }
 
 
     try {
@@ -210,6 +218,15 @@ int ArtikelTest::testKonstruktorFalsch2(){
  */
 int ArtikelTest::testKonstruktorFalsch3(){
     Artikel artikel = Artikel(1234, "Test3", -1);
+    return -1;
+}
+
+/**
+ * Artikelnummer ist nicht vierstellig
+ * @return  -1
+ */
+int ArtikelTest::testKonstruktorFalsch4(){
+    Artikel artikel = Artikel(123, "Test4", 4);
     return -1;
 }
 
