@@ -53,12 +53,12 @@ void Artikeldialog::credits() {
                     if(vector.at(i)=="Q") {
 //                        HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
 //                        SetConsoleTextAttribute(handle, FOREGROUND_RED);
-                        cout << "\x1B[5m" << "\x1B[31m" << vector.at(i);
+                        cout << "\x1B[40m\x1B[5m\x1B[31m" + vector.at(i);
                     } else {
 //                        HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
 //                        SetConsoleTextAttribute(handle, FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN |
 //                                                        FOREGROUND_BLUE);
-                        cout << "\x1B[37m"+vector.at(i);
+                        cout << "\x1B[0m\x1B[40m\x1B[37m"+vector.at(i);
                     }
                 }
                 cout << endl;
@@ -66,9 +66,10 @@ void Artikeldialog::credits() {
 //                HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
 //                SetConsoleTextAttribute(handle, FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN |
 //                                                FOREGROUND_BLUE);
-                std::cout << "\x1B[37m"+input << std::endl;
+                std::cout << "\x1B[40m\x1B[37m"+input << std::endl;
             }
         }
+	cout << "\x1B[0m" <<endl;
         inFile.close();
     } else {
         cout << "Datei kann nicht geoeffnet werden!";
